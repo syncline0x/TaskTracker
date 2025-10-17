@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TaskTracker.iml" filepath="$PROJECT_DIR$/TaskTracker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/task-tracker-backend/task-tracker-backend.iml" filepath="$PROJECT_DIR$/task-tracker-backend/task-tracker-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/task-tracker-backend/task-tracker-backend.iml" filepath="$PROJECT_DIR$/services/task-tracker-backend/task-tracker-backend.iml" />
     </modules>
   </component>
 </project>

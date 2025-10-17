@@ -1,0 +1,43 @@
+services:
+
+  #  PostgreSQL
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: postgres_db
+    networks:
+      - tracker-net
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - .env
+
+  # Adminer
+  adminer:
+    image: adminer:latest
+    restart: always
+    networks:
+      - tracker-net
+    ports:
+      - "5050:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
+
+networks:
+  tracker-net:
+    driver: bridge
